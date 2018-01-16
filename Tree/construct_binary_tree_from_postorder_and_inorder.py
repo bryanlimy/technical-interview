@@ -1,22 +1,7 @@
 # Given Post-order and In-order traversals, construct the tree.
 # See https://www.geeksforgeeks.org/construct-a-binary-tree-from-postorder-and-inorder/ fpr detail
 
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
-
-    def preorder(self):
-        if not self:
-            return []
-        result = [self.value]
-        if self.left:
-            result += self.left.preorder()
-        if self.right:
-            result += self.right.preorder()
-        return result
-
+from util import *
 
 def construct(inorder, postorder):
     if not inorder or not postorder or len(inorder) != len(postorder):
