@@ -9,6 +9,7 @@ def DFS_recursive(head, visited=[]):
             DFS_recursive(node, visited)
     return visited
 
+
 def DFS_iterative(head):
     if not head:
         return None
@@ -20,6 +21,18 @@ def DFS_iterative(head):
             current.append(node.right)
         if node.left:
             current.append(node.left)
+    return visited
+
+
+def BFS_iterative(head):
+    visited, current = [], [head]
+    while current:
+        node = current.pop(0)
+        visited.append(node.value)
+        if node.left:
+            current.append(node.left)
+        if node.right:
+            current.append(node.right)
     return visited
 
 
@@ -45,11 +58,20 @@ def inorder_without_recursion(head):
 if __name__ == "__main__":
     lst = [4, 8, 2, 5, 1, 6, 3, 7]
     root = create_bst(lst)
+    print("preorder")
     print(root.preorder())
+    print("inorder")
     print(root.inorder())
+    print("postorder")
     print(root.postorder())
 
+    print("DFS recursive")
     print(DFS_recursive(root, []))
+    print("DFS iterative")
     print(DFS_iterative(root))
 
+    print("inorder without recursion")
     inorder_without_recursion(root)
+
+    print("BFS iterative")
+    print(BFS_iterative(root))

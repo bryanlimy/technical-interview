@@ -34,6 +34,7 @@ def print_level(root):
         print("")
         current_level = next_level
 
+
 if __name__ == "__main__":
     lst = [4, 8, 2, 5, 1, 6, 3, 7]
     root = create_bst(lst)

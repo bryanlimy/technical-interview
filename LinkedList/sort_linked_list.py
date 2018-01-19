@@ -9,13 +9,11 @@ def sort_linked_list(head):
             node.next = sorted
             sorted = node
         else:
-            prev = sorted
-            next = sorted.next
-            while next and next.value < node.value:
-                prev = prev.next
-                next = next.next
-            node.next = next
-            prev.next = node
+            current = sorted
+            while current.next and current.next.value < node.value:
+                current = current.next
+            node.next = current.next
+            current.next = node
         head = head.next
     return sorted
 
