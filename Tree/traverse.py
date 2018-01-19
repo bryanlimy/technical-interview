@@ -22,6 +22,26 @@ def DFS_iterative(head):
             current.append(node.left)
     return visited
 
+
+def inorder_without_recursion(head):
+    current = head
+    stack = []
+    done = False
+    while not done:
+        # keep traversing to the left
+        # then to the right
+        if current:
+            stack.append(current)
+            current = current.left
+        else:
+            if stack:
+                current = stack.pop()
+                print(current.value)
+                current = current.right
+            else:
+                done = True
+
+
 if __name__ == "__main__":
     lst = [4, 8, 2, 5, 1, 6, 3, 7]
     root = create_bst(lst)
@@ -31,3 +51,5 @@ if __name__ == "__main__":
 
     print(DFS_recursive(root, []))
     print(DFS_iterative(root))
+
+    inorder_without_recursion(root)
