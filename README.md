@@ -193,6 +193,7 @@ them.
 - Best Case Sort: Merge Sort: O(n)
 - Average Case Sort: Merge Sort: O(n log n)
 - Worst Case Sort: Merge Sort: O(n log n)
+- Number of comparsions: Merge Sort: O(n log n)
 
 
 ### **Quicksort**
@@ -219,7 +220,6 @@ information is sorted.
 - Worst Case Sort: Merge Sort: O(n^2)
 
 #### Merge Sort vs. Quicksort
-- Quicksort is likely faster in practice.
 - Merge Sort divides the set into the smallest possible groups immediately then
 reconstructs the incrementally as it sorts the groupings.
 - Quicksort continually divides the set by the average, until the set is
@@ -234,8 +234,10 @@ an in-place sort and uses auxiliary memory, it is very well suited to modern
 computer architectures.
 - Sorting a LinkedList is likely to be faster with merge sort since it makes 
 fewer total comparsions and is not affected by a poor pivot choice.
-- Mergesort is well suited to be implemented parallely.
-- Mergesort uses about 30% less comparsions than quicksort.
+- Merge sort **worset case** use about 39% less comparsions than quicksort's 
+**average case**.
+- Merge sort is well suited for data that can only be accessed sequentially 
+(e.g. LinkedList).
 
 
 ### **Bubble Sort**
