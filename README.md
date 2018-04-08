@@ -172,6 +172,7 @@ first, starting at the root.
 
 
 ## Efficient Sorting Basics
+
 ### **Merge Sort**
 #### Definition:
 - A comparison based sorting algorithm
@@ -193,6 +194,7 @@ them.
 - Average Case Sort: Merge Sort: O(n log n)
 - Worst Case Sort: Merge Sort: O(n log n)
 
+
 ### **Quicksort**
 #### Definition:
 - A comparison based sorting algorithm
@@ -210,6 +212,18 @@ algorithms it is often faster in practice than
 many other sorting algorithms, such as merge sort.
 - Know that it halves the data set by the average continuously until all the
 information is sorted.
+
+#### Big O efficiency:
+- Best Case Sort: Merge Sort: O(n)
+- Average Case Sort: Merge Sort: O(n log n)
+- Worst Case Sort: Merge Sort: O(n^2)
+
+#### Merge Sort vs. Quicksort
+- Quicksort is likely faster in practice.
+- Merge Sort divides the set into the smallest possible groups immediately then
+reconstructs the incrementally as it sorts the groupings.
+- Quicksort continually divides the set by the average, until the set is
+recursively sorted.
 - Quicksort is significantly faster in practice than other O(nlogn) algorithms,
 because its inner loop can be efficiently implemented on most architectures,
 and in most real-world data, it is possible to make design choices that
@@ -218,11 +232,11 @@ tends to make excellent usage of the memory hierarchy, taking perfect
 advantage of virtual memory and available caches. Although quicksort is not
 an in-place sort and uses auxiliary memory, it is very well suited to modern
 computer architectures.
+- Sorting a LinkedList is likely to be faster with merge sort since it makes 
+fewer total comparsions and is not affected by a poor pivot choice.
+- Mergesort is well suited to be implemented parallely.
+- Mergesort uses about 30% less comparsions than quicksort.
 
-#### Big O efficiency:
-- Best Case Sort: Merge Sort: O(n)
-- Average Case Sort: Merge Sort: O(n log n)
-- Worst Case Sort: Merge Sort: O(n^2)
 
 ### **Bubble Sort**
 #### Definition:
@@ -241,13 +255,6 @@ and moving the smaller on to left.
 - Best Case Sort: Merge Sort: O(n)
 - Average Case Sort: Merge Sort: O(n^2)
 - Worst Case Sort: Merge Sort: O(n^2)
-
-#### Merge Sort Vs. Quicksort
-- Quicksort is likely faster in practice.
-- Merge Sort divides the set into the smallest possible groups immediately then
-reconstructs the incrementally as it sorts the groupings.
-- Quicksort continually divides the set by the average, until the set is
-recursively sorted.
 
 ## Basic Types of Algorithms
 ### **Recursive Algorithms**
