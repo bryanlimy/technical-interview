@@ -1,8 +1,8 @@
 def merge(left, right):
     if not left:
-        return left
-    if not right:
         return right
+    if not right:
+        return left
 
     result = []
     i = 0
@@ -14,7 +14,7 @@ def merge(left, right):
         else:
             result.append(right[j])
             j += 1
-            
+
         if i == len(left):
             result += right[j:]
             break
@@ -33,8 +33,3 @@ def merge_sort(lst):
     right = merge_sort(lst[middle:])
 
     return merge(left, right)
-
-
-if __name__ == "__main__":
-    sample = [3,4,5,1,2,8,3,7,6]
-    print(merge_sort(sample))
