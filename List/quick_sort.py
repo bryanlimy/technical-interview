@@ -1,12 +1,15 @@
 def partition(lst, low, high):
+    # pick last element as pivot
     pivot = lst[high]
-    i = low - 1
+    # index of where pivot should be
+    index = low
     for j in range(low, high):
         if lst[j] < pivot:
-            i += 1
-            lst[i], lst[j] = lst[j], lst[i]
-    lst[i + 1], lst[high] = lst[high], lst[i + 1]
-    return i + 1
+            lst[index], lst[j] = lst[j], lst[index]
+            index += 1
+    # place pivot at index
+    lst[index], lst[high] = lst[high], lst[index]
+    return index
 
 
 def quick_sort(lst, low, high):

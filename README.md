@@ -170,8 +170,14 @@ This list is meant to be a both a quick guide and reference for further research
 - Computer architecture favors the quicksort process.
 
 #### What you need to know:
-- While it has the same Big O as (or worse in some cases) many other sorting algorithms it is often faster in practice than many other sorting algorithms, such as merge sort.
+- While it has the same Big O as (or worse in some cases) many other sorting algorithms it is often faster in practice than
+many other sorting algorithms, such as merge sort.
 - Know that it halves the data set by the average continuously until all the information is sorted.
+- It is significantly faster in practice than other O(nlogn) algorithms, because its inner loop can be efficiently implemented
+on most architectures, and in most real-world data, it is possible to make design choices that minimize the probability of
+requiring quadratic time. Additionally, quick sort tends to make excellent usage of the memory hierarchy, taking perfect
+advantage of virtual memory and available caches. Although quick sort is not an in-place sort and uses auxiliary memory, it
+is very well suited to modern computer architectures.
 
 #### Big O efficiency:
 - Best Case Sort: Merge Sort: O(n)
