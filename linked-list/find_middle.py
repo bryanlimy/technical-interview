@@ -1,10 +1,15 @@
 from util import *
 
 def find_middle(head):
-    slow = fast = head
-    while fast and fast.next:
-        fast = fast.next.next
-        slow = slow.next
+    if not head:
+        return head
+    slow = head
+    fast = head.next
+    while fast:
+        fast = fast.next
+        if fast:
+            fast = fast.next
+            slow = slow.next
     return slow
 
 if __name__ == "__main__":
