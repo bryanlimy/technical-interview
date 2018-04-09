@@ -101,10 +101,97 @@ a essentially a linked list.
   - Because of the above it is more likely to be used as a data structure than
   a binary tree.
 
+#### Search ####
+```
+def search(root, key):
+    if root is None or root.val == key:
+        return root
+    elif root.val < key:
+        return search(root.right, key)
+    else:
+        return search(root.left, key)
+```
+
+#### Insert ####
+```
+def insert(root, node):
+    if root is None:
+        root = node
+    elif root.val < node.val:
+        if root.right is None:
+            root.right = node
+        else:
+            insert(root.right, node)
+    else:
+        if root.left is None:
+            root.left = node
+        else:
+            insert(root.left, node)
+```
+
 #### Big O efficiency:
-- Indexing:  Binary Search Tree: O(log n)
-- Search:    Binary Search Tree: O(log n)
-- Insertion: Binary Search Tree: O(log n) 
+- Space: Binary Search Tree: Average: O(n) Worst: O(n)
+- Indexing:  Binary Search Tree: Average: O(log n) Worst: O(n)
+- Search:    Binary Search Tree: Average: O(log n) Worst: O(n)
+- Insertion: Binary Search Tree: Average: O(log n) Worst: O(n)
+
+
+### **Red-Black Tree** ###
+#### Definition
+- Is a self-balancing BST where very node
+    - has a color either red or black
+    - root of tree is always black
+    - there are no two adjacent red nodes
+    - every path from root to a None node has the same number of black nodes
+
+#### What you need to know:
+- Binary tree has worst case of O(n) for a skewed tree.
+- Red-black tree make sure the height of the tree remains O(log n) after every
+insertion and deletion, then it is guarantee to have an upper bound of O(log n)
+for all these operations.
+- The height of the tree is always O(log n)
+- **Black height** is number of black nodes on a path from a node to a leaf.
+Leaf nodes are also counted black nodes. A node of height h has black height >=
+h / 2.
+- Color of a None node is considered as black
+
+#### Implementation
+- Use two tools to do balancing:
+1) recoloring
+2) rotation
+- Recolor first, if does not work, then rotate
+##### Insertion
+1) perform standard BST insertion and make the color of newly inserted nodes
+**x** as red
+2) if x is root, change color of x as black
+3) if color of x's parent is not black or x is not root
+    a) if x's uncle is red
+        i) change color of parent and uncle as black
+        ii) color fo grand parent as red
+        iii) change x = x's grandparent, repeat steps 2 and 3 for new x
+    b) if x's uncle is black, then there can be four configurations for x
+        i) left left case (p is left child of g and x is left child of p)
+        ![Alt text](images/redBlackCase3a.png?raw=true "left-left-case")
+        ii) left right case (p is left child of g and x is right child of p)
+        ![Alt text](images/redBlackCase3b.png?raw=true "left-right-case")
+        iii) right right case (mirror of case a)
+        ![Alt text](images/redBlackCase3c.png?raw=true "left-right-case")
+        iv) right left case (mirror of case c)
+        ![Alt text](images/redBlackCase3d.png?raw=true "left-right-case")
+
+
+### **AVL Tree** ###
+#### Definition
+
+
+#### What you need to know:
+
+
+#### Red-Black Tree vs AVL Tree
+- AVL tree are more balanced compare to red-black trees, but may causes more
+rotations during insertion and deletion.
+- AVL tree is better in search, red-black tree is better in insertion and
+deletion.
 
 
 ## Search Basics
@@ -312,13 +399,18 @@ recursive method (array, n)       | iterative method (array)
 ```
 ### **Greedy Algorithm**
 #### Definition:
-- An algorithm that, while executing, selects only the information that meets a certain criteria.
+- An algorithm that, while executing, selects only the information that meets
+a certain criteria.
 - The general five components, taken from [Wikipedia](http://en.wikipedia.org/wiki/Greedy_algorithm#Specifics):
   - A candidate set, from which a solution is created.
-  - A selection function, which chooses the best candidate to be added to the solution.
-  - A feasibility function, that is used to determine if a candidate can be used to contribute to a solution.
-  - An objective function, which assigns a value to a solution, or a partial solution.
-  - A solution function, which will indicate when we have discovered a complete solution.
+  - A selection function, which chooses the best candidate to be added to the
+  solution.
+  - A feasibility function, that is used to determine if a candidate can be
+  used to contribute to a solution.
+  - An objective function, which assigns a value to a solution, or a partial
+  solution.
+  - A solution function, which will indicate when we have discovered a
+  complete solution.
 
 #### What you need to know:
 - Used to find the optimal solution for a given problem.

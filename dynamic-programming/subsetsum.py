@@ -50,6 +50,8 @@ def subset_sum_dp(S, t, i, memo=dict()):
         return True
     elif t < 0:
         return False
+    elif i < 0:
+        return False
     else:
         memo[key] = subset_sum_dp(S, t - S[i], i - 1, memo) or \
                     subset_sum_dp(S, t, i - 1, memo)
@@ -57,9 +59,9 @@ def subset_sum_dp(S, t, i, memo=dict()):
 
 
 if __name__ == "__main__":
-    S = list(randint(100, size=100, dtype=int))
-    #S = [2, 4, 6, 10]
-    t = 256
+    #S = list(randint(100, size=100, dtype=int))
+    S = [2, 4, 6, 10]
+    t = 16
     # result = []
     # start = timer()
     # all_subset_sum(S, t, result, [])
