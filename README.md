@@ -155,11 +155,18 @@ Leaf nodes are also counted black nodes. A node of height h has black height >=
 h / 2.
 - Color of a None node is considered as black
 
+#### Big O efficiency:
+- Space: Red Black Tree: Average: O(n) Worst: O(n)
+- Indexing:  Red Black Tree: Average: O(log n) Worst: O(log n)
+- Search:    Red Black Tree: Average: O(log n) Worst: O(log n)
+- Insertion: Red Black Tree: Average: O(log n) Worst: O(log n)
+
 #### Implementation
 - Use two tools to do balancing:
     1) recoloring
     2) rotation
 - Recolor first, if does not work, then rotate
+
 ##### Insertion
 1. perform standard BST insertion and make the color of newly inserted nodes
 **x** as red
@@ -178,14 +185,101 @@ h / 2.
         ![Alt text](images/redBlackCase3c.png?raw=true "left-right-case")
         4. right left case (mirror of case c)
         ![Alt text](images/redBlackCase3d.png?raw=true "left-right-case")
+![Alt text](images/redBlackExample.png?raw=true "red-black-example")
+
+##### Deletion
+1. Perform standard BST delete. Let **v** be the node to be deleted and **u**
+be the child that replaces v.
+2. if either u or v is red: mark the replaced child as black
+3. if both u and v are black:
+    1. color u as double black. Then we have to reduces to convert this double
+    black to single black
+    2. do while current node u is double black and is not root
+        1. if sibling s is black and at least one of sibling's children is red
+        perform rotation(s)
+        2. if sibling is black and its both children are black, perform
+        recolouring and recur for the parent if parent is black. If parent was
+        red then we don't need to recur for parent, simply make parent black.
+        3. if sibling is red, preform a rotation to move old sibling up,
+        recolour the old sibling and parent. The new sibling is always black.
+    3. if u is root, make it single black and return.
 
 
 ### **AVL Tree** ###
 #### Definition
-
+- A self-balancing BST where the difference between heights of left and right
+subtrees cannot be more than one for all nodes.
 
 #### What you need to know:
+- The height of an AVL tree is always O(log n).
 
+#### Big O efficiency:
+- Space: AVL Tree: Average: O(n) Worst: O(n)
+- Indexing:  AVL Tree: Average: O(log n) Worst: O(log n)
+- Search:    AVL Tree: Average: O(log n) Worst: O(log n)
+- Insertion: AVL Tree: Average: O(log n) Worst: O(log n)
+
+#### Implementation
+```def insert(key, value, node):
+    if key < node.key:
+        if node.left:
+            insert(key, value, node.left)
+        else:
+            node.left = TreeNode(key, value, parent=node)
+            update_balance(node.left)
+    else:
+        if node.right:
+                insert(key, val, node.right)
+        else:
+            node.right = TreeNode(key, val, parent=node)
+            update_balance(node.right)
+
+def update_balance(node):
+    if node.balance_actor > 1 or node.balance_actor < -1:
+        rebalance(node)
+        return
+    if not node.parent:
+        if node.is_left_child():
+            node.parent.balanceFactor += 1
+        elif node.is_right_child():
+            node.parent.balanceFactor -= 1
+
+        if node.parent.balanceFactor != 0:
+            update_balance(node.parent)
+
+def rebalance(node):
+    if node.balanceFactor < 0:
+         if node.right.balanceFactor > 0:
+            rotate_right(node.right)
+            rotate_left(node)
+         else:
+            rotate_left(node)
+  elif node.balanceFactor > 0:
+         if node.left.balanceFactor < 0:
+            self.rotate_left(node.left)
+            self.rotate_right(node)
+         else:
+            self.rotate_right(node)
+
+def rotate_left(node):
+    new = node.right
+    node.right = new.left
+    if new.left != None:
+        new.left.parent = node
+    new.parent = node.parent
+    if not node.parent: # node is root
+        self.root = new
+    else:
+        if node.isLeftChild():
+            node.parent.left = new
+        else:
+            node.parent.right = new
+    new.left = node
+    node.parent = new
+    node.balanceFactor = node.balanceFactor + 1 - min(new.balanceFactor, 0)
+    new.balanceFactor = new.balanceFactor + 1 + max(node.balanceFactor, 0)
+```
+![Alt text](images/AVL-rotate-left.png?raw=true "AVL-rotate-left")
 
 #### Red-Black Tree vs AVL Tree
 - AVL tree are more balanced compare to red-black trees, but may causes more
