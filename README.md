@@ -1,14 +1,3 @@
-## Studying for a Tech Interview Sucks, so Here's a Cheat Sheet to Help
-
-This list is meant to be a both a quick guide and reference for further
-research into these topics.  It's basically a summary of that Computer Science
-courses you never took or forgot about, so there's no way it can cover
-everything in depth.
-It also will be available as a [gist](https://gist.github.com/TSiege/cbb0507082bb18ff7e4b)
-on Github for everyone to edit and add to.
-
----------------
-
 ## Data Structure Basics
 
 ### **Array**
@@ -87,6 +76,15 @@ distinct inputs.
 - Insertion:        Hash Tables: O(1)  
 
 ---------------
+
+### **Heap**
+### Definition
+- A specicalized tree-based data structure that satisfies the heap property.
+
+#### What you need to know:
+- if P is a parent node of C, then the value of P is >= value of C (max heap),
+or <= value of C (min heap).
+- efficient implementation of priority queue
 
 ### **Binary Tree**
 #### Definition: 
@@ -300,6 +298,37 @@ deletion.
 
 ---------------
 
+### **Trie-Tree** ###
+#### Definition:
+- An search tree that has ordered data structure that is used to store a
+dynamic set of associative array where the keys are usually strings
+
+#### What you need to know:
+- Unlike a BST, no node in the tree stores the key associated with that node
+- Its position in the tree defines the key with which it is associated
+![Alt text](images/trie-tree.png?raw=true "Trie Tree")
+- Can use to replace hash table, has faster worst case look up time O(m),
+where m is the length of a search string, compare to O(n) for an imperfect
+hash table
+- Common application is storing a predictive text or autocomplete dictionary,
+such as found on mobile. It takes advantage of a trie's ability to quickly
+search, insert and delete entries.
+- FSM (deterministic acyclic finite state automaton) is better if only storing
+words.
+
+---------------
+
+### **K-ary-Tree** ###
+#### Definition:
+- A rooted tree in which each node has no more than k children.
+
+#### What you need to know:
+- Binary tree is a special case of K-ary tree with k = 2.
+- For a k-ary tree with height h, it has maximum of k^h number of leaves.
+- The height h of a k-ary tree does not include the root node.
+
+---------------
+
 ## Search Basics
 ### **Breadth First Search**
 #### Definition:
@@ -496,7 +525,6 @@ distinguish since both can be used to implement the other. But know that,
 - Recursive functions have to keep the function records in memory and jump
 from one memory address to another to be invoked to pass parameters and return
 values. That makes them very bad performance wise.
-- Check out this [Stack Overflow post](http://stackoverflow.com/questions/19794739/what-is-the-difference-between-iteration-and-recursion) for more info.
 
 #### Pseudo Code of Moving Through an Array (this is why iteration is used for this)
 ```
@@ -516,7 +544,7 @@ recursive method (array, n)       | iterative method (array)
 #### Definition:
 - An algorithm that, while executing, selects only the information that meets
 a certain criteria.
-- The general five components, taken from [Wikipedia](http://en.wikipedia.org/wiki/Greedy_algorithm#Specifics):
+- The general five components:
   - A candidate set, from which a solution is created.
   - A selection function, which chooses the best candidate to be added to the
   solution.
@@ -529,10 +557,12 @@ a certain criteria.
 
 #### What you need to know:
 - Used to find the optimal solution for a given problem.
-- Generally used on sets of data where only a small proportion of the information evaluated meets the desired result.
+- Generally used on sets of data where only a small proportion of the
+information evaluated meets the desired result.
 - Often a greedy algorithm can help reduce the Big O of an algorithm.
 
-#### Pseudo Code of a Greedy Algorithm to Find Largest Difference of any Two Numbers in an Array.
+#### Pseudo Code of a Greedy Algorithm to Find Largest Difference of any Two
+Numbers in an Array.
 ```
 greedy algorithm (array)
   var largest difference = 0
@@ -542,4 +572,53 @@ greedy algorithm (array)
   return largest difference
 ```
 
-This algorithm never needed to compare all the differences to one another, saving it an entire iteration.
+This algorithm never needed to compare all the differences to one another,
+saving it an entire iteration.
+
+---------------
+
+### **Dijkstra algorithm**
+#### Definition:
+- An algorithm for finding the shortest paths between nodes in a graph.
+
+#### What you need to know:
+- Known as uniform cost search, formulated as an instance of BFS.
+
+#### Algorithm:
+- See [YouTube](https://www.youtube.com/watch?v=_lHSawdgXpI)
+1. Mark all nodes unvisited and create a set of unvisited nodes
+2. Assign every node a tentative distance value. Set zero to the initial node
+and infinite for all other nodes
+3. For the current node, consider all of its unvisited neighbours and calculate
+their tentative distance through the current node. Compare the newly calculated
+tentative distance to the current assigned value and assign the smaller one.
+4. After considering all of the neighbours, mark the current node as visited
+and remove it from the unvisited set. A visited node will never be visited again.
+5. Move to the next unvisited node with the smallest tentative distance and
+repeat steps 2 to 5.
+6. Stop the algorithm when the target node has been visited or all nodes have
+been visited.
+
+#### Big O efficiency:
+- Time complexity O(|E| + |V| log |V|) with heap
+
+---------------
+
+
+### **A***
+#### Definition:
+- A widely used in path-finding and graph traversal, the process of plotting an
+efficiently directly path between multiple points.
+
+#### What you need to know:
+- choose the path with the minimum heuristic value f(n) = g(n) + h(n)
+    - g(n) = path cost to node n
+    - h(n) = estimated distance to goal from node n
+- condition on h(n)
+    - admissible: h(n) <= h*(n) the cost of an optimal path, never over-estimates
+    - monotonic: h(n1) <= c(n1, a, n2) + h(n2)
+
+#### Big O efficiency:
+- Time complexity O(|E| + |V| log |V|) with heap
+
+---------------
