@@ -7,6 +7,8 @@ everything in depth.
 It also will be available as a [gist](https://gist.github.com/TSiege/cbb0507082bb18ff7e4b)
 on Github for everyone to edit and add to.
 
+---------------
+
 ## Data Structure Basics
 
 ### **Array**
@@ -30,7 +32,8 @@ for additional elements.
 - Search:           Linear array: O(n),      Dynamic array: O(n)
 - Optimized Search: Linear array: O(log n), Dynamic array: O(log n)
 - Insertion:        Linear array: n/a        Dynamic array: O(n)
-  
+
+---------------
 
 ### **Linked List**
 #### Definition: 
@@ -59,6 +62,7 @@ arrays too.
 - Optimized Search: Linked Lists: O(n)
 - Insertion:        Linked Lists: O(1)  
 
+---------------
 
 ### **Hash Table or Hash Map**
 #### Definition: 
@@ -82,6 +86,7 @@ distinct inputs.
 - Search:           Hash Tables: O(1)
 - Insertion:        Hash Tables: O(1)  
 
+---------------
 
 ### **Binary Tree**
 #### Definition: 
@@ -100,6 +105,12 @@ a essentially a linked list.
   - There can be no duplicate node.
   - Because of the above it is more likely to be used as a data structure than
   a binary tree.
+
+#### Big O efficiency:
+- Space: Binary Search Tree: Average: O(n) Worst: O(n)
+- Indexing:  Binary Search Tree: Average: O(log n) Worst: O(n)
+- Search:    Binary Search Tree: Average: O(log n) Worst: O(n)
+- Insertion: Binary Search Tree: Average: O(log n) Worst: O(n)
 
 #### Search ####
 ```
@@ -129,12 +140,7 @@ def insert(root, node):
             insert(root.left, node)
 ```
 
-#### Big O efficiency:
-- Space: Binary Search Tree: Average: O(n) Worst: O(n)
-- Indexing:  Binary Search Tree: Average: O(log n) Worst: O(n)
-- Search:    Binary Search Tree: Average: O(log n) Worst: O(n)
-- Insertion: Binary Search Tree: Average: O(log n) Worst: O(n)
-
+---------------
 
 ### **Red-Black Tree** ###
 #### Definition
@@ -204,6 +210,7 @@ be the child that replaces v.
         recolour the old sibling and parent. The new sibling is always black.
     3. if u is root, make it single black and return.
 
+---------------
 
 ### **AVL Tree** ###
 #### Definition
@@ -287,6 +294,7 @@ rotations during insertion and deletion.
 - AVL tree is better in search, red-black tree is better in insertion and
 deletion.
 
+---------------
 
 ## Search Basics
 ### **Breadth First Search**
@@ -311,6 +319,8 @@ first, starting at the root.
 - Search: Breadth First Search: O(|E| + |V|)
 - E is number of edges
 - V is number of vertices
+
+---------------
 
 ### **Depth First Search**
 #### Definition:
@@ -351,6 +361,7 @@ first, starting at the root.
   - Breadth First Search tends to be a looping algorithm.
   - Depth First Search tends to be a recursive algorithm.
 
+---------------
 
 ## Efficient Sorting Basics
 
@@ -376,6 +387,7 @@ them.
 - Worst Case Sort: Merge Sort: O(n log n)
 - Number of comparsions: Merge Sort: O(n log n)
 
+---------------
 
 ### **Quicksort**
 #### Definition:
@@ -420,6 +432,7 @@ fewer total comparsions and is not affected by a poor pivot choice.
 - Merge sort is well suited for data that can only be accessed sequentially 
 (e.g. LinkedList).
 
+---------------
 
 ### **Bubble Sort**
 #### Definition:
@@ -456,6 +469,7 @@ and moving the smaller on to left.
   using recursion.
   - Often used in Depth First Search
 
+---------------
 
 ### **Iterative Algorithms**
 #### Definition:
@@ -491,6 +505,9 @@ recursive method (array, n)       | iterative method (array)
   else                            |
     exit loop                     |
 ```
+
+---------------
+
 ### **Greedy Algorithm**
 #### Definition:
 - An algorithm that, while executing, selects only the information that meets
