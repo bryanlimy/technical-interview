@@ -227,7 +227,8 @@ subtrees cannot be more than one for all nodes.
 - Insertion: AVL Tree: Average: O(log n) Worst: O(log n)
 
 #### Implementation
-```def insert(key, value, node):
+```
+def insert(key, value, node):
     if key < node.key:
         if node.left:
             insert(key, value, node.left)
@@ -240,7 +241,8 @@ subtrees cannot be more than one for all nodes.
         else:
             node.right = TreeNode(key, val, parent=node)
             update_balance(node.right)
-
+```
+```
 def update_balance(node):
     if node.balance_actor > 1 or node.balance_actor < -1:
         rebalance(node)
@@ -253,7 +255,8 @@ def update_balance(node):
 
         if node.parent.balanceFactor != 0:
             update_balance(node.parent)
-
+```
+```
 def rebalance(node):
     if node.balanceFactor < 0:
          if node.right.balanceFactor > 0:
@@ -267,7 +270,8 @@ def rebalance(node):
             self.rotate_right(node)
          else:
             self.rotate_right(node)
-
+```
+```
 def rotate_left(node):
     new = node.right
     node.right = new.left
