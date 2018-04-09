@@ -157,26 +157,26 @@ h / 2.
 
 #### Implementation
 - Use two tools to do balancing:
-1) recoloring
-2) rotation
+    1) recoloring
+    2) rotation
 - Recolor first, if does not work, then rotate
 ##### Insertion
-1) perform standard BST insertion and make the color of newly inserted nodes
+1. perform standard BST insertion and make the color of newly inserted nodes
 **x** as red
-2) if x is root, change color of x as black
-3) if color of x's parent is not black or x is not root
-    a) if x's uncle is red
-        i) change color of parent and uncle as black
-        ii) color fo grand parent as red
-        iii) change x = x's grandparent, repeat steps 2 and 3 for new x
-    b) if x's uncle is black, then there can be four configurations for x
-        i) left left case (p is left child of g and x is left child of p)
+2. if x is root, change color of x as black
+3. if color of x's parent is not black or x is not root
+    1. if x's uncle is red
+        1. change color of parent and uncle as black
+        2. color fo grand parent as red
+        3. change x = x's grandparent, repeat steps 2 and 3 for new x
+    2. if x's uncle is black, then there can be four configurations for x
+        1. left left case (p is left child of g and x is left child of p)
         ![Alt text](images/redBlackCase3a.png?raw=true "left-left-case")
-        ii) left right case (p is left child of g and x is right child of p)
+        2. left right case (p is left child of g and x is right child of p)
         ![Alt text](images/redBlackCase3b.png?raw=true "left-right-case")
-        iii) right right case (mirror of case a)
+        3. right right case (mirror of case a)
         ![Alt text](images/redBlackCase3c.png?raw=true "left-right-case")
-        iv) right left case (mirror of case c)
+        4. right left case (mirror of case c)
         ![Alt text](images/redBlackCase3d.png?raw=true "left-right-case")
 
 
